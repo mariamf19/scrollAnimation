@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2-Minute Meditation Journey</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Serif:wght@700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Serif', serif; /* Use serif font */
+            color: white; /* Change text color to white */
+            background: #f8f8f8; /* Fallback color */
+            overflow-x: hidden; /* Prevent horizontal scroll */
+        }
+
+        .section {
+            height: 100vh; /* Full viewport height for each section */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            background-size: cover; 
+            background-position: center; /* Centers the image */
+            transition: background 0.5s;
+        }
+
+        .intro {
+            background: url('bg1.jpg') no-repeat center center; /* Background for intro */
+        }
+
+        .breath {
+            background: url('bg2.jpg') no-repeat center center; /* Background for breath */
+        }
+
+        .nature {
+            background: url('bg3.jpg') no-repeat center center; /* Background for nature */
+        }
+
+        .grounding {
+            background: url('bg4.jpg') no-repeat center center; /* Background for grounding */
+        }
+
+        .gratitude {
+            background: url('bg5.jpg') no-repeat center center; /* Background for gratitude */
+        }
+
+        h1, h2 {
+            font-size: 2.5em; /* Larger font size for headers */
+            font-weight: bold; /* Bold text */
+        }
+
+        .message {
+            font-size: 1.5em; /* Larger font size for messages */
+            padding: 20px;
+            border: 2px dashed #d1a266; /* Decorative border */
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.8); /* Semi-transparent background */
+            max-width: 600px; /* Limit width */
+            color: rgb(3, 0, 99);
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 0.5s ease-in, transform 0.5s ease-in;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Remove any margin from the last section to prevent gap */
+        .conclusion {
+            margin: 0; /* Remove margin to eliminate gap */
+        }
+    </style>
+</head>
+<body>
+    <audio id="background-music" loop>
+        <source src="your-audio-file.mp3" type="audio/mpeg">
+        Your browser does not support the audio tag.
+    </audio>
+
+    <div class="section intro fade-in">
+        <h1>Welcome to Your 2-Minute Meditation Journey</h1>
+        <p>Take a moment to breathe and relax amidst your busy schedule.</p>
+    </div>
+    <div class="section breath fade-in">
+        <h2>Step 1: Breath Awareness</h2>
+        <div class="message">Close your eyes and take a deep breath in... hold it for a moment... now exhale slowly. Repeat this 3 times.</div>
+    </div>
+    <div class="section nature fade-in">
+        <h2>Step 2: Nature Visualization</h2>
+        <div class="message">Picture a serene natural scene: a quiet forest, a peaceful beach, or a calm mountain. Imagine the sights, sounds, and smells.</div>
+    </div>
+    <div class="section grounding fade-in">
+        <h2>Step 3: Grounding Exercise</h2>
+        <div class="message">Feel your feet on the ground. Notice the texture beneath your soles. Take a moment to connect with the earth.</div>
+    </div>
+    <div class="section gratitude fade-in">
+        <h2>Step 4: Gratitude Reflection</h2>
+        <div class="message">Think of one thing you are grateful for today. Let this feeling of gratitude fill your heart.</div>
+    </div>
+    <div class="section conclusion fade-in">
+        <h2>Thank You for Joining</h2>
+        <div class="message">Carry this calmness into your day. Remember to take a moment for yourself whenever you can.</div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#background-music')[0].play(); // Play music on page load
+
+            // Check for visibility on scroll
+            function checkVisibility() {
+                $('.section').each(function () {
+                    const bottomOfWindow = $(window).scrollTop() + $(window).height();
+                    const bottomOfElement = $(this).offset().top + $(this).outerHeight();
+
+                    if (bottomOfWindow > bottomOfElement) {
+                        $(this).addClass('visible');
+                    }
+                });
+            }
+
+            // Call function on scroll and on page load
+            $(window).on('scroll', checkVisibility);
+            checkVisibility(); // Call on page load
+        });
+    </script>
+</body>
+</html>
